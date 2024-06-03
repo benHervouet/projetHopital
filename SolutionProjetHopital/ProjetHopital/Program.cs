@@ -10,6 +10,7 @@ namespace ProjetHopital
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello");
         }
     }
 }
