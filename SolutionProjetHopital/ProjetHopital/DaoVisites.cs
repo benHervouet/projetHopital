@@ -10,7 +10,7 @@ namespace ProjetHopital
 {
     class DaoVisites
     {
-        public const string connectionString = @"Data Source=DESKTOP-QRR8BDC\SQLEXPRESS;Initial Catalog=ajc;Integrated Security=True";
+        public const string connectionString = @"Data Source=VOTREPC\SQLEXPRESS;Initial Catalog=ajc;Integrated Security=True";
 
         public void Create(Visite visite)
         {
