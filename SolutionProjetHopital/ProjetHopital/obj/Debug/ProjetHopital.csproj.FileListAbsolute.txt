@@ -1,1 +1,14 @@
-C:\Users\Utilisateur\source\repos\benHervouet\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CoreCompileInputs.cache
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\bin\Debug\ProjetHopital.exe.config
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\bin\Debug\ProjetHopital.exe
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\bin\Debug\ProjetHopital.pdb
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.AssemblyReference.cache
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CoreCompileInputs.cache
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.exe
+C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.pdb
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\bin\Debug\ProjetHopital.exe.config
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\bin\Debug\ProjetHopital.exe
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\bin\Debug\ProjetHopital.pdb
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.AssemblyReference.cache
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CoreCompileInputs.cache
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.exe
+C:\Users\anton\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.pdb
