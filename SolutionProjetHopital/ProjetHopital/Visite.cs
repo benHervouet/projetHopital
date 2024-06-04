@@ -31,5 +31,15 @@ namespace ProjetHopital
             this.DateVisite = dateVisite;
             this.NumeroSalle = numeroSalle;
         }
+
+        public Visite(int patientid, string nomMedecin, decimal tarif, DateTime dateVisite, int numeroSalle)
+        {
+            this.Id = id;
+            this.Patientid = patientid;
+            this.NomMedecin = nomMedecin;
+            this.Tarif = tarif;
+            this.DateVisite = dateVisite;
+            this.NumeroSalle = numeroSalle;
+        }
     }
 }

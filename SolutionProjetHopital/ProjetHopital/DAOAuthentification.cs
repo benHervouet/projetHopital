@@ -10,7 +10,7 @@ namespace ProjetHopital
 {
     class DAOAuthentification 
     {
-        public const string connectionString = @"Data Source=DESKTOP-QRR8BDC\SQLEXPRESS;Initial Catalog=ajc;Integrated Security=True";
+        public const string connectionString = @"Data Source = DESKTOP-37D0GD8\SQLEXPRESS; Initial Catalog = bdd_hopital ; Integrated Security = True";
 
         public (string Role, int? Salle)? Login(string login, string password)
         {
