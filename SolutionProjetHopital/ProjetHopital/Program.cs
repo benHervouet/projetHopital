@@ -144,8 +144,18 @@ namespace ProjetHopital
 
                             // Ajouter une nouvelle visite à la liste des visites
 
-                            Visite visite = new Visite(prochainPatient.Id, nom, 23, DateTime.UtcNow, salleNumero);
+                            Visite visite = new Visite(prochainPatient.Id, nom, 23, DateTime.Now, salleNumero);
                             visites.Add(visite);
+                            if (visites.Count==5)
+                            {
+                                foreach (var uneVisite in visites)
+                                {
+                                    new DAOVisite().Create(uneVisite);
+                                }
+                                visites.Clear();
+                                Console.WriteLine("Les visites sont sauvegardées.");
+
+                            }
                         }
                         else
                         {
