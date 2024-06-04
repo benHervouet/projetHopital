@@ -124,7 +124,7 @@ namespace ProjetHopital
 
                 int choice = int.Parse(Console.ReadLine());
 
-                if (choice == 4)
+                if (choice == 5)
                 {
                     break;
                 }
@@ -179,6 +179,12 @@ namespace ProjetHopital
                         }
                         visites.Clear();
                         Console.WriteLine("Les visites sont sauvegardées.");
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Liste des visite en base");
+                        foreach (Visite v in new DAOVisite().SelectAll())
+                            Console.WriteLine(v);
                         break;
                 }
 

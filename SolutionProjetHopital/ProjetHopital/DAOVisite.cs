@@ -42,5 +42,27 @@ namespace ProjetHopital
             connection.Close();
         }
 
+        public List<Visite> SelectAll()
+        {
+            List<Visite> liste = new List<Visite>();
+            string connectionString = @"Data Source = DESKTOP-QRR8BDC\SQLEXPRESS; Initial Catalog = hopital-ajc ; Integrated Security = True";
+            string sql = "select * from visites";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Visite v = new Visite(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetDateTime(3), reader.GetInt32(4));
+                liste.Add(v);
+            }
+            connection.Close();
+
+
+            return liste;
+        }
+
     }
 }
