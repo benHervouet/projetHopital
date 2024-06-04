@@ -12,7 +12,7 @@ namespace ProjetHopital
     {
         public const string connectionString = @"Data Source = DESKTOP-7L8P9AQ\SQLEXPRESS; Initial Catalog = ajc ; Integrated Security = True";
 
-        public void CreatePatient(Patient patient)
+        public static void CreatePatient(Patient patient)
         {
             string sql = "insert into patient VALUES(@Nom, @Prenom, @Age, @Adresse, @Telephone)";
 
@@ -29,6 +29,27 @@ namespace ProjetHopital
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+        }
+
+        public static Patient SelectById(int id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                Patient p = null;
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT * FROM patient WHERE id = @id", connection);
+                command.Parameters.AddWithValue("@id", id);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        p = new Patient(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4), reader.GetString(5));
+                    }
+                }
+                return p;
+            }
         }
 
     }

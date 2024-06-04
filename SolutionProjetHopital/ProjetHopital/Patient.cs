@@ -31,5 +31,13 @@ namespace ProjetHopital
             this.Adresse = adresse;
             this.Telephone = telephone;
         }
+        public Patient(string nom, string prenom, int age, string adresse, string telephone)
+        {
+            this.Nom = nom;
+            this.Prenom = prenom;
+            this.Age = age;
+            this.Adresse = adresse;
+            this.Telephone = telephone;
+        }
     }
 }
