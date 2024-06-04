@@ -16,18 +16,18 @@ namespace ProjetHopital
 
         static void MedecinMenu(DAOPatient daoPatient, DAOVisite daoVisite, int salleNumero)
         {
+            List<Visite> visites = new List<Visite>();
             while (true)
             {
                 Console.WriteLine(" ------------- Interface Medecin --------------");
                 Console.WriteLine(" 1 : Rendre la salle disponible");
                 Console.WriteLine(" 2 : Afficher la file d'attente");
-                Console.WriteLine(" 3 : afficher info patient");
-                Console.WriteLine(" 4 : Sauvegarder les visites en base");
-                Console.WriteLine(" 5 : Quitter");
+                Console.WriteLine(" 3 : Sauvegarder les visites en base");
+                Console.WriteLine(" 4 : Quitter");
 
                 int choice = int.Parse(Console.ReadLine());
 
-                if (choice == 5)
+                if (choice == 4)
                 {
                     break;
                 }
@@ -43,7 +43,11 @@ namespace ProjetHopital
                             Patient prochainPatient = Hopital.Instance.ProchainPatient();
                             salle.AssignerPatient(prochainPatient);
                             Hopital.Instance.RetirerPatient();
-                            Console.WriteLine($"Patient {prochainPatient.Nom} {prochainPatient.Prenom} est maintenant dans la salle {salleNumero}");
+                            Console.WriteLine($"Patient {prochainPatient.Id} {prochainPatient.Nom} {prochainPatient.Prenom} {prochainPatient.Age} {prochainPatient.Adresse} {prochainPatient.Telephone} est maintenant dans la salle {salleNumero}");
+
+                            // Ajouter une nouvelle visite à la liste des visites
+                            Visite visite = new Visite(prochainPatient.Id, salle.MedecinAssocie.Nom, 23, DateTime.Now, salleNumero);
+                            visites.Add(visite);
                         }
                         else
                         {
@@ -52,17 +56,21 @@ namespace ProjetHopital
                         break;
 
                     case 2:
-
+                        Console.WriteLine("File d'attente");
+                        foreach (var p in Hopital.Instance.FileAttente)
+                        {
+                            Console.WriteLine($" {p.Id} {p.Nom} {p.Prenom} {p.Age} {p.Adresse} {p.Telephone}");
+                        }
                         break;
 
                     case 3:
-                        Console.WriteLine("Info patient");
-
-                        break;
-
-                    case 4:
-                        Console.WriteLine("Sauvegarde des visites...");
-
+                        Console.WriteLine("Sauvegarde des visites");
+                        foreach (var visite in visites)
+                        {
+                            daoVisite.Create(visite);
+                        }
+                        visites.Clear();
+                        Console.WriteLine("Les visites sont sauvegardées.");
                         break;
                 }
             }
