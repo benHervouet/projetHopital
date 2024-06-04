@@ -10,9 +10,9 @@ namespace ProjetHopital
 {
     class DAOAuthentification 
     {
-        public const string connectionString = @"Data Source = DESKTOP-37D0GD8\SQLEXPRESS; Initial Catalog = bdd_hopital ; Integrated Security = True";
+        public const string connectionString = @"Data Source = DESKTOP-QRR8BDC\SQLEXPRESS; Initial Catalog = hopital-ajc ; Integrated Security = True";
 
-        public (string Role, int? Salle)? Login(string login, string password)
+        public (string Role, int? Salle, string nom)? Login(string login, string password)
         {
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -28,7 +28,8 @@ namespace ProjetHopital
                     {
                         string role = reader.GetInt32(1) == 0 ? "secretaire" : "medecin";
                         int? salle = reader.GetInt32(1) == 1 ? 1 : reader.GetInt32(1) == 2 ? 2 : (int?)null;
-                        return (role, salle);
+                        string nom = reader.GetString(0);
+                        return (role, salle, nom);
                     }
                 }
 

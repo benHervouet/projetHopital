@@ -68,7 +68,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salle.cs" />
-    <Compile Include="Secretaire.cs" />
     <Compile Include="Visite.cs" />
   </ItemGroup>
   <ItemGroup>

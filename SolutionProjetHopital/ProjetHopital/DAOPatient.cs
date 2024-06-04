@@ -31,26 +31,6 @@ namespace ProjetHopital
             connection.Close();
         }
 
-        //public static Patient SelectById(int id)
-        //{
-
-        //    SqlConnection connection = new SqlConnection(connectionString);
-        //    {
-        //        Patient p = null;
-        //        SqlCommand command = new SqlCommand("SELECT * FROM patients WHERE id = @id", connection);
-        //        command.Parameters.AddWithValue("@id", id);
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-        //        {
-        //            if (reader.Read())
-        //            {
-        //                p = new Patient(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4), reader.GetString(5));
-        //            }
-        //        }
-        //        return p;
-        //    }
-        //}
         public Patient SelectById(int id)
         {
             try

@@ -7,9 +7,42 @@ namespace ProjetHopital
     {
         static void Main(string[] args)
         {
-            //secrétaire
-            DAOPatient daoPatient = new DAOPatient();
-            MenuSecretaire();
+            //Redirection Utilisateur
+
+            DAOAuthentification daoAuth = new DAOAuthentification();
+
+            Console.WriteLine("Veuillez vous identifier:");
+            while (true)
+            {
+                Console.WriteLine("Login");
+                string login = Console.ReadLine();
+
+                Console.WriteLine("Password");
+                string password = Console.ReadLine();
+
+                var user = daoAuth.Login(login, password);
+
+                if (user.HasValue)
+                {
+                    var (role, salle, nom) = user.Value;
+                    Console.WriteLine($"Interface {role}");
+
+                    if (role == "secretaire")
+                    {
+                        MenuSecretaire();
+                    }
+
+                    else if (role == "medecin")
+                    {
+                        MedecinMenu(salle.Value, nom);
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("Login ou mdp inncorect");
+                }
+            }
         }
         static void MenuSecretaire()
         {
@@ -78,7 +111,7 @@ namespace ProjetHopital
             }
         }
 
-        static void MedecinMenu(DAOPatient daoPatient, DAOVisite daoVisite, int salleNumero)
+        static void MedecinMenu(int salleNumero, string nom)
         {
             List<Visite> visites = new List<Visite>();
             while (true)
@@ -110,7 +143,8 @@ namespace ProjetHopital
                             Console.WriteLine($"Patient {prochainPatient.Id} {prochainPatient.Nom} {prochainPatient.Prenom} {prochainPatient.Age} {prochainPatient.Adresse} {prochainPatient.Telephone} est maintenant dans la salle {salleNumero}");
 
                             // Ajouter une nouvelle visite à la liste des visites
-                            Visite visite = new Visite(prochainPatient.Id, salle.MedecinAssocie.Nom, 23, DateTime.Now, salleNumero);
+
+                            Visite visite = new Visite(prochainPatient.Id, nom, 23, DateTime.UtcNow, salleNumero);
                             visites.Add(visite);
                         }
                         else
@@ -131,7 +165,7 @@ namespace ProjetHopital
                         Console.WriteLine("Sauvegarde des visites.");
                         foreach (var visite in visites)
                         {
-                            daoVisite.Create(visite);
+                            new DAOVisite().Create(visite);
                         }
                         visites.Clear();
                         Console.WriteLine("Les visites sont sauvegardées.");
