@@ -10,9 +10,52 @@ namespace ProjetHopital
     {
         static void Main(string[] args)
         {
+            string connectionString = @"Data Source = DESKTOP-37D0GD8\SQLEXPRESS; Initial Catalog = bdd_hopital ; Integrated Security = True";
+            db database = new db(connectionString);
 
+            DAOPatient daoPatient = new DAOPatient(database);
+            DAOVisite daoVisite = new DAOVisite(database);
+            DAOAuthentification daoAuthentification = new DAOAuthentification(database);
+
+            Console.WriteLine("Bienvenue à l'hôpital!");
+
+            while (true)
+            {
+                Console.WriteLine("1. Login");
+                Console.WriteLine("2. Quitter");
+
+                int choice = int.Parse(Console.ReadLine());
+
+                if (choice == 2)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Entrez votre nom d'utilisateur:");
+                string username = Console.ReadLine();
+                Console.WriteLine("Entrez votre mot de passe:");
+                string password = Console.ReadLine();
+
+                var loginResult = daoAuthentification.Login(username, password);
+                if (loginResult == null)
+                {
+                    Console.WriteLine("Identifiants incorrects");
+                    continue;
+                }
+
+                string role = loginResult.Value.Role;
+                int? salle = loginResult.Value.Salle;
+
+                if (role == "secretaire")
+                {
+                    
+                }
+                else if (role == "medecin")
+                {
+                    MedecinMenu(daoPatient, daoVisite, salle.Value);
+                }
+            }
         }
-
 
         static void MedecinMenu(DAOPatient daoPatient, DAOVisite daoVisite, int salleNumero)
         {
@@ -64,7 +107,7 @@ namespace ProjetHopital
                         break;
 
                     case 3:
-                        Console.WriteLine("Sauvegarde des visites");
+                        Console.WriteLine("Sauvegarde des visites.");
                         foreach (var visite in visites)
                         {
                             daoVisite.Create(visite);
@@ -73,6 +116,7 @@ namespace ProjetHopital
                         Console.WriteLine("Les visites sont sauvegardées.");
                         break;
                 }
+
             }
         }
     }

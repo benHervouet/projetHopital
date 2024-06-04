@@ -5,3 +5,7 @@ C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital
 C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CoreCompileInputs.cache
 C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.exe
 C:\Users\Baptiste\Source\Repos\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.pdb
+C:\Users\Utilisateur\source\repos\benHervouet\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.AssemblyReference.cache
+C:\Users\Utilisateur\source\repos\benHervouet\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\source\repos\benHervouet\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.exe
+C:\Users\Utilisateur\source\repos\benHervouet\projetHopital\SolutionProjetHopital\ProjetHopital\obj\Debug\ProjetHopital.pdb
