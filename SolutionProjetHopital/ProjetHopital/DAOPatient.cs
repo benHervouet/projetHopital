@@ -59,6 +59,26 @@ namespace ProjetHopital
             }
         }
 
+        public static void Update(Patient patient) //Update
+        {
+            string sql = "Update patients set nom=@Nom, prenom=@Prenom, age=@Age, adresse=@Adresse, telephone=@Telephone where id=@Id;";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = sql;
+            command.Parameters.AddWithValue("@Id", patient.Id);
+            command.Parameters.AddWithValue("@Nom", patient.Nom);
+            command.Parameters.AddWithValue("@Prenom", patient.Prenom);
+            command.Parameters.AddWithValue("@Age", patient.Age);
+            command.Parameters.AddWithValue("@Adresse", patient.Adresse);
+            command.Parameters.AddWithValue("@Telephone", patient.Telephone);
+
+            connection.Open();
+            // execution de la requete
+            command.ExecuteNonQuery();
+            connection.Close();
+
+        }
 
     }
 }
