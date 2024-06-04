@@ -18,7 +18,7 @@ namespace ProjetHopital
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("SELECT nom, metier FROM authentification WHERE login = @login AND passowrd = @Password", connection);
+                SqlCommand command = new SqlCommand("SELECT nom, metier FROM authentification WHERE login = @login AND password = @Password", connection);
                 command.Parameters.AddWithValue("@Login", login);
                 command.Parameters.AddWithValue("@Password", password);
 

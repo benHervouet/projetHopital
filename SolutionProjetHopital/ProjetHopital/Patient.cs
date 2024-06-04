@@ -39,5 +39,14 @@ namespace ProjetHopital
             this.Adresse = adresse;
             this.Telephone = telephone;
         }
+        public override string ToString()
+        {
+            string res = $"\n--- Informations du client {id} ---" +
+                $"\n {nom} {prenom}" +
+                $"\n Age : {Age}" +
+                $"\n Adresse : {adresse}" +
+            $"\n Téléphone : {telephone}";
+            return res;
+        }
     }
 }
