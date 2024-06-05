@@ -41,5 +41,9 @@ namespace ProjetHopital
             this.DateVisite = dateVisite;
             this.NumeroSalle = numeroSalle;
         }
+        public override string ToString()
+        {
+            return $"{patientid} {nomMedecin} {tarif} {dateVisite} {numeroSalle}";
+        }
     }
 }

@@ -55,6 +55,7 @@ namespace ProjetHopital
                 Console.WriteLine("2. Afficher la file d’attente");
                 Console.WriteLine("3. Afficher le prochain patient de la file(sans le retirer)");
                 Console.WriteLine("4. Modifier une fiche patient");
+                Console.WriteLine("5. Consulter l'historique des visites d'un patient");
 
                 int saisieMenu = Convert.ToInt32(Console.ReadLine());
                 if (saisieMenu == 0)
@@ -109,7 +110,6 @@ namespace ProjetHopital
                         }
                         break;
                     case 4:
-
                         Console.WriteLine("Entrez le numéro du patient à modifier");
                         int saisieIdc4 = Convert.ToInt32(Console.ReadLine());
                         Patient patientC4 = new DAOPatient().SelectById(saisieIdc4);
@@ -159,7 +159,13 @@ namespace ProjetHopital
                         {
                             Console.WriteLine("Patient non-trouvé");
                         }
+                        break;
+                    case 5:
+                        Console.WriteLine("Entrez le numéro du patient dont vous voulez consulter les visites");
+                        int saisieIdc5 = Convert.ToInt32(Console.ReadLine());
 
+                        foreach (Visite v in new DAOVisite().SelectAllByIdPatient(saisieIdc5))
+                            Console.WriteLine(v.ToString());
                         break;
                 }
             }
