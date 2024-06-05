@@ -244,8 +244,8 @@ namespace ProjetHopital
 
                     case 4:
                         Console.WriteLine("Liste des visite en base");
-                        foreach (Visite v in new DAOVisite().SelectAll())
-                            Console.WriteLine(v);
+                        foreach (Visite v in new DAOVisite().SelectAllBySalleMedecin(salleNumero))
+                            Console.WriteLine(v.ToString());
                         break;
                 }
 

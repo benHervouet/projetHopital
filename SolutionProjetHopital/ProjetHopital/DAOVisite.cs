@@ -45,7 +45,7 @@ namespace ProjetHopital
         public List<Visite> SelectAllByIdPatient(int id)
         {
             List<Visite> liste = new List<Visite>();
-            string sql = "select * from visites where idpatient="+id;
+            string sql = "select * from visites where idpatient=" + id;
 
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand(sql, connection);
@@ -54,7 +54,26 @@ namespace ProjetHopital
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                //Visite v = new Visite(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetDateTime(3), reader.GetInt32(4));
+                Visite v = new Visite((int)reader["idpatient"], (string)reader["medecin"], (decimal)reader["tarif"], (DateTime)reader["date"], (int)reader["num-salle"]);
+                liste.Add(v);
+            }
+            connection.Close();
+
+
+            return liste;
+        }
+        public List<Visite> SelectAllBySalleMedecin(int numSalle)
+        {
+            List<Visite> liste = new List<Visite>();
+            string sql = "select * from visites where [num-salle]=" + numSalle;
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(sql, connection);
+            connection.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
                 Visite v = new Visite((int)reader["idpatient"], (string)reader["medecin"], (decimal)reader["tarif"], (DateTime)reader["date"], (int)reader["num-salle"]);
                 liste.Add(v);
             }
@@ -77,7 +96,7 @@ namespace ProjetHopital
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                Visite v = new Visite(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetDateTime(3), reader.GetInt32(4));
+                Visite v = new Visite((int)reader["idpatient"], (string)reader["medecin"], (decimal)reader["tarif"], (DateTime)reader["date"], (int)reader["num-salle"]);
                 liste.Add(v);
             }
             connection.Close();
