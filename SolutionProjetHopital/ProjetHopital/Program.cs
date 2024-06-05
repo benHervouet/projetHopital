@@ -50,13 +50,15 @@ namespace ProjetHopital
             {
             
                 Console.WriteLine("----- Interface secrétaire -----");
+                Console.WriteLine("0. Sortir de ce menu et revenir au menu principal");
                 Console.WriteLine("1. Rajouter a la file d’attente un patient");
                 Console.WriteLine("2. Afficher la file d’attente");
                 Console.WriteLine("3. Afficher le prochain patient de la file(sans le retirer)");
-                Console.WriteLine("4. Sortir de ce menu et revenir au menu principal");
+                Console.WriteLine("4. Modifier une fiche patient");
+                Console.WriteLine("5. Consulter l'historique des visites d'un patient");
 
                 int saisieMenu = Convert.ToInt32(Console.ReadLine());
-                if (saisieMenu == 4)
+                if (saisieMenu == 0)
                 {
                     break;
                 }
@@ -106,6 +108,64 @@ namespace ProjetHopital
                         {
                             Console.WriteLine("La file d'attente est vide.");
                         }
+                        break;
+                    case 4:
+                        Console.WriteLine("Entrez le numéro du patient à modifier");
+                        int saisieIdc4 = Convert.ToInt32(Console.ReadLine());
+                        Patient patientC4 = new DAOPatient().SelectById(saisieIdc4);
+                        if (patientC4 != null) //Si true : Modification du patient
+                        {
+                            Console.WriteLine($"Patient {patientC4.Id} trouvé. Modification des informations");
+
+                            // Nom
+                            Console.WriteLine("Le nom du patient est : " + patientC4.Nom);
+                            Console.Write("Modifiez le nom du patient ou appuyez sur 'entrée' pour conserver l'actuel : ");
+                            string response = Console.ReadLine();
+                            patientC4.Nom = string.IsNullOrEmpty(response) ? patientC4.Nom : response;
+
+                            // Prénom
+                            Console.WriteLine("Le prénom du patient est : " + patientC4.Prenom);
+                            Console.Write("Modifiez le prénom du patient ou appuyez sur 'entrée' pour conserver l'actuel : ");
+                            string prenomResponse = Console.ReadLine();
+                            patientC4.Prenom = string.IsNullOrEmpty(prenomResponse) ? patientC4.Prenom : prenomResponse;
+
+                            // Âge
+                            Console.WriteLine("L'âge du patient est : " + patientC4.Age);
+                            Console.Write("Modifiez l'âge du patient ou appuyez sur 'entrée' pour conserver l'actuel : ");
+                            string ageResponse = Console.ReadLine();
+                            int newAge = 0;
+
+                            if (!string.IsNullOrEmpty(ageResponse) && int.TryParse(ageResponse, out newAge))
+                            {
+                                patientC4.Age = newAge;
+                            }
+
+                            // Adresse
+                            Console.WriteLine("L'adresse du patient est : " + patientC4.Adresse);
+                            Console.Write("Modifiez l'adresse du patient ou appuyez sur 'entrée' pour conserver l'actuel : ");
+                            string adresseResponse = Console.ReadLine();
+                            patientC4.Adresse = string.IsNullOrEmpty(adresseResponse) ? patientC4.Adresse : adresseResponse;
+
+                            // Téléphone
+                            Console.WriteLine("Le numéro de téléphone du patient est : " + patientC4.Telephone);
+                            Console.Write("Modifiez le numéro de téléphone du patient ou appuyez sur 'entrée' pour conserver l'actuel : ");
+                            string telResponse = Console.ReadLine();
+                            patientC4.Telephone = string.IsNullOrEmpty(telResponse) ? patientC4.Telephone : telResponse;
+
+
+                            DAOPatient.Update(patientC4);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Patient non-trouvé");
+                        }
+                        break;
+                    case 5:
+                        Console.WriteLine("Entrez le numéro du patient dont vous voulez consulter les visites");
+                        int saisieIdc5 = Convert.ToInt32(Console.ReadLine());
+
+                        foreach (Visite v in new DAOVisite().SelectAllByIdPatient(saisieIdc5))
+                            Console.WriteLine(v.ToString());
                         break;
                 }
             }
