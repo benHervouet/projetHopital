@@ -120,7 +120,8 @@ namespace ProjetHopital
                 Console.WriteLine(" 1 : Rendre la salle disponible");
                 Console.WriteLine(" 2 : Afficher la file d'attente");
                 Console.WriteLine(" 3 : Sauvegarder les visites en base");
-                Console.WriteLine(" 4 : Quitter");
+                Console.WriteLine(" 4 : Liste des visites en base");
+                Console.WriteLine(" 5 : Quitter");
 
                 int choice = int.Parse(Console.ReadLine());
 
